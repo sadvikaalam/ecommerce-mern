@@ -1,8 +1,5 @@
-const req = require("express/lib/request");
 const Product = require("../models/Product");
-const { 
-  verifyTokenAndAuthorization, 
-  verifyTokenAndAdmin } = require("./verifyToken");
+const { verifyTokenAndAdmin } = require("./verifyToken");
 
 const router = require("express").Router();
 
@@ -22,7 +19,7 @@ router.post("/", verifyTokenAndAdmin, async ( req, res) => {
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
    
    try{
-      const updatedProduct = await User.findByIdAndUpdate(req.params.id, 
+      const updatedProduct = await Product.findByIdAndUpdate(req.params.id, 
          {
             $set: req.body
          },
@@ -44,7 +41,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
    }
 });
 
-// //GET USER
+// //GET PRODUCT
 router.get("/find/:id", async (req, res) => {
    try{
       const product = await Product.findById(req.params.id);
