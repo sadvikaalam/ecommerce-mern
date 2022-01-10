@@ -1,4 +1,5 @@
 import { Add, Remove } from "@material-ui/icons";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
@@ -141,6 +142,8 @@ const SummaryButton = styled.button`
 
 
 const Cart = () => {
+  const cart = useSelector(state => state.cart);
+  console.log(cart);
   return (
     <Container>
       <Navbar/>
@@ -157,51 +160,33 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
+            { cart.products.map((product) => (
+              <Product>
               <ProductDetail>
-                <Image src="https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png"/>
+                <Image src={product.img}/>
                 <Details>
-                  <ProductName><b>Product:</b> JESSIE THUNDER SHOES</ProductName>
-                  <ProductId><b>ID:</b> 91782193812</ProductId>
-                  <ProductColor color="black"/>
-                  <ProductSize><b>Size:</b> 37.6</ProductSize>
+                  <ProductName><b>Product:</b> {product.title}</ProductName>
+                  <ProductId><b>ID:</b> {product._id}</ProductId>
+                  <ProductColor color={product.color}/>
+                  <ProductSize><b>Size:</b> {product.size}</ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
                   <Add/>
-                  <ProductAmount>2</ProductAmount>
+                  <ProductAmount>{product.quantity}</ProductAmount>
                   <Remove/>
                 </ProductAmountContainer>
-                <ProductPrice>$30</ProductPrice>
+                <ProductPrice>$ {product.price*product.quantity}</ProductPrice>
               </PriceDetail>
-            </Product>
+            </Product>))}
             <Hr/>
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388"/>
-                <Details>
-                  <ProductName><b>Product:</b> MERK LOKAL</ProductName>
-                  <ProductId><b>ID:</b> 91782193812</ProductId>
-                  <ProductColor color="grey"/>
-                  <ProductSize><b>Size:</b> 37.6</ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add/>
-                  <ProductAmount>2</ProductAmount>
-                  <Remove/>
-                </ProductAmountContainer>
-                <ProductPrice>$30</ProductPrice>
-              </PriceDetail>
-            </Product>
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -213,7 +198,7 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryButton>CHECKOUT NOW</SummaryButton>
           </Summary>
