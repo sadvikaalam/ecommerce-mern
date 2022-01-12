@@ -1,0 +1,58 @@
+.newProduct{
+  flex: 4;
+}
+
+.addProductForm{
+  margin-top: 10px;
+}
+
+.addProductItem{
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.addProductImgContainer{
+  display: flex;
+  align-items: center;
+}
+
+.addProductImg{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.addProductUpload{
+  cursor: pointer;
+  font-size: 30px !important;
+}
+
+.addProductItem>label{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.addProductItem>input{
+  padding: 10px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.addProductItem>select{
+  padding: 10px;
+}
+
+.addProductButton{
+  margin-top: 10px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: darkblue;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+}
