@@ -15,7 +15,7 @@ dotenv.config();
 
 //Connect to MongoDB
 mongoose.connect(
-  process.env.MONGO_URL)
+  process.env.MONGO_URI)
   .then(() => console.log("DBConnection Successful"))
   .catch((err) => {
       console.log(err);
@@ -31,6 +31,9 @@ app.use("/api/products", productRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/checkout", stripeRoute);
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
 //Configuration for Port 
 app.listen(process.env.PORT, () => {

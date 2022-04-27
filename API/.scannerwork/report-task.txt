@@ -1,0 +1,6 @@
+projectKey=react-project
+serverUrl=https://cr.singorojo.my.id
+serverVersion=9.2.4.50792
+dashboardUrl=https://cr.singorojo.my.id/dashboard?id=react-project
+ceTaskId=AX8Vl0CofQ22BzIyJo3Q
+ceTaskUrl=https://cr.singorojo.my.id/api/ce/task?id=AX8Vl0CofQ22BzIyJo3Q

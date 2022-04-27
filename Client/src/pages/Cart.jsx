@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import { mobile } from '../responsive';
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
-import { userRequest } from "../requestMethod";
+import { userRequest } from "../requestMethod"; 
 import { useNavigate } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE;
@@ -152,10 +152,11 @@ const Cart = () => {
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
 
-  const onToken = (token) => {
+  const onToken = (token) => { 
     setStripeToken(token);
   }
-  useEffect(() => {
+
+   useEffect(() => {
     const makeRequest = async () => {
       try{
         const res = await userRequest.post("/checkout/payment", {
@@ -167,6 +168,8 @@ const Cart = () => {
     };
     stripeToken &&  makeRequest();
   },[stripeToken, cart.total, navigate]);
+
+  console.log('stripe token : ',stripeToken);
   return (
     <Container>
       <Navbar/>

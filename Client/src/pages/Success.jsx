@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router';
 
 const Success = () => {
+  const location= useLocation();
+  console.log(location);
   return (
     <div>
       successful
@@ -8,4 +11,4 @@ const Success = () => {
   )
 }
 
-export default Success
+export default Success;

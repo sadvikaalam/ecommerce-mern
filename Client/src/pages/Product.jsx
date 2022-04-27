@@ -121,7 +121,7 @@ const Product = () => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
-        setProduct(res.data);
+        setProduct(res.data); 
       } catch {}
     };
     getProduct();
